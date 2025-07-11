@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoITeens</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <body>
+    <header>
+        <h1>{% block title %} Home {% endblock %}</h1>
+    </header>
+    <main>
+{% comment %} 
+    {% for product in products %}
+        <li class="product-card" id="product-{{ product.name|slugify }}">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <p>[Немає зображення]</p>
+        {% endif %}
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Price: {{ product.price }} USD</p>
+        <button>Add to Cart</button>
+        <a href="{% url 'reviews' %}">
+            <button type="button">Reviews</button>
+        </a>
+        <a href="{% url 'add_review' %}">
+            <button type="button">Add review</button>
+        </a>
+        </li>
+    {% empty %}
+        <li>Поки немає товарів.</li>
+    {% endfor %} {% endcomment %}
+    </ul>
+
+        </main>
+    <footer>
+        <p>&copy; 2025 GoITeens. All rights reserved.</p>
+    </footer>
+    </body>
+</head>
+</html>

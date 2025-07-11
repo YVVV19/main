@@ -52,8 +52,7 @@ def logout_request(request):
     return redirect("index")
 
 
-
-def add_produckt(request):
+def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -61,4 +60,4 @@ def add_produckt(request):
             return redirect('index') 
     else:
             form = ProductForm()
-    return render(request, 'main/admin_page.html', {'form': form})
+    return render(request, 'Shop/admin.html', {'form': form})

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birth_date = models.DateField(null=True, blank=True)
-    avatar = models.ImageField(upload_to='main/images/user_avatar', null=True, blank=True)
+    avatar = models.ImageField(upload_to='Shop/images/user_avatar', null=True, blank=True)
 
 
 class Product(models.Model):
@@ -13,7 +13,7 @@ class Product(models.Model):
     description = models.CharField(max_length=150)
     price = models.FloatField()
     category = models.CharField(max_length=30)
-    image = models.ImageField(upload_to='main/images/admin_add', blank=True, null=True)
+    image = models.ImageField(upload_to='Shop/images/admin_add', blank=True, null=True)
 
 
 class Review(models.Model):

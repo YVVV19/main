@@ -9,7 +9,7 @@
 <body>
     <div class="form-container">
         <h2>Додати новий товар</h2>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Зберегти товар</button>

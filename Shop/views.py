@@ -37,7 +37,7 @@ def register_view(request):
     return render(request, 'Shop/register.html', {'form': form})
 
 
-def login_p(request):
+def login(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():

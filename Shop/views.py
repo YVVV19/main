@@ -5,9 +5,10 @@ from .forms import RegisterForm, ProductForm, ProductFormReview, ProfileForm
 from django.contrib.auth import authenticate, logout, login
 from .models import Product, Review, Profile
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from django.core.paginator import Paginator
@@ -46,7 +47,9 @@ def login_p(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
-                return redirect("index")
+                response = redirect("index")
+                response.set_cookie('username', username, max_age=999999)
+                return response
             else:
                 messages.error(request,"Invalid username or password.")
         else:
@@ -78,3 +81,18 @@ def paginator(request):
     page_number = request.GET.get("page")
     page = paginator.get_page(page_number)
     return render(request, 'Shop/paginator.html', {'page':page})
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request=request, user=user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'Shop/change_password.html', {'form': form})

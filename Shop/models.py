@@ -15,6 +15,7 @@ class Product(models.Model):
     category = models.CharField(max_length=30)
     image = models.ImageField(upload_to='Shop/images/admin_add', blank=True, null=True)
     new = models.BooleanField(default=False)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
 
 
 class Review(models.Model):

@@ -1,4 +1,109 @@
+{% extends "Shop/__base.html" %}
 {% load static %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block link_css %}
+    <link rel="stylesheet" href="{% static 'Shop/css/style.css' %}">
+{% endblock link_css %}
+
+{% block main %}
+    <div>
+        <h2>New Arrivals</h2>
+    <ul class="product-list">
+    <li class="product-card">
+        <img src="{% static 'Shop/images/apple.jpg' %}" height="250" width="250" alt="Product 1" >
+        <h3>Apple</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Add to Cart</button>
+    </li>
+    <li class="product-card">
+        <img src="{% static 'Shop/images/nuts.jpg' %}" height="250" width="250" alt="Product 2">
+        <h3>Arahis</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Add to Cart</button>
+    </li>
+    <li class="product-card">
+        <img src="{% static 'Shop/images/persik.jpg' %}" height="250" width="250" alt="Product 3">
+        <h3>Peach</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Add to Cart</button>
+    </li>
+    <li class="product-card">
+        <img src="{% static 'Shop/images/ananas.jpg' %}" height="250" width="250" alt="Product 4">
+        <h3>Pineapple</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Add to Cart</button>
+    </li>
+    <li class="product-card">
+        <img src="{% static 'Shop/images/bananas.jpg' %}" height="250" width="250" alt="Product 5">
+        <h3>Banana</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Add to Cart</button>
+    </li>
+    <li class="product-card">
+        <img src="{% static 'Shop/images/mango.jpg' %}" height="250" width="250" alt="Product 6">
+        <h3>Mango</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button>Add to Cart</button>
+    </li>
+    </ul>
+    </div>
+    <button class="btn btn-outline-info" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="ProductsCollapse">
+    Products
+    </button>
+    <div class="collapse show" id="productsCollapse">
+    <h2>Products</h2>
+    <ul class="product-list">
+    {% for product in products %}
+        <li class="product-card" id="product-{{ product.name|slugify }}">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <p>[Немає зображення]</p>
+        {% endif %}
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Price: {{ product.price }} USD</p>
+        <button>Add to Cart</button>
+        </li>
+    {% empty %}
+        <li>Поки немає товарів.</li>
+    {% endfor %}
+    </ul>
+</div>
+
+    <button class="btn btn-outline-info" type="button" data-bs-toggle="collapse" data-bs-target="#newProductsCollapse" aria-expanded="false" aria-controls="newProductsCollapse">
+    New Added
+    </button>
+    <div class="collapse show" id="newProductsCollapse">
+    <h2>New Added</h2>
+    <ul class="product-list">
+    {% for new_product in new_products %}
+        <li class="new_product-card" id="new_product-{{ new_product.name|slugify }}">
+        {% if new_product.image %}
+            <img src="{{ new_product.image.url }}" alt="{{ new_product.name }}">
+        {% else %}
+            <p>[Немає зображення]</p>
+        {% endif %}
+        <h3>{{ new_product.name }}</h3>
+        <p>{{ new_product.description }}</p>
+        <p>Price: {{ new_product.price }} USD</p>
+        <button>Add to Cart</button>
+        </li>
+    {% empty %}
+        <li>Поки немає товарів.</li>
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock main %}
+
+
+
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,4 +184,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     </body>
 </head>
-</html>
+</html> {% endcomment %}

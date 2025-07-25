@@ -6,7 +6,7 @@
 
 
 body {
-    background-color: #f2f2f2;
+    background-color: #c3c1c1;
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -14,8 +14,8 @@ body {
 
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #b0b0b0;
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,13 +36,13 @@ nav ul {
 
 
 nav li {
-    color: #000;
+    color: #ffffff;
     margin-right: 20px;
 }
 
 
 nav a {
-    color: #f2f2f2;
+    color: #d4d4d4;
     text-decoration: none;
 }
 
@@ -54,11 +54,11 @@ h2 {
 
 
 form {
-    background-color: #fff;
+    background-color: #d9d7d7;
     padding: 30px;
     max-width: 400px;
     margin: 0 auto;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 8px rgba(170, 180, 205, 0.1);
     border-radius: 5px;
 }
 
@@ -74,14 +74,14 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #9f9f9f;
     border-radius: 4px;
 }
 
 
 button {
-    background-color: #333;
-    color: #fff;
+    background-color: #0759e8;
+    color: #0759e8;
     border: none;
     padding: 10px 20px;
     font-size: 14px;

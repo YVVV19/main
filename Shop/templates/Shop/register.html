@@ -1,4 +1,24 @@
+{% extends "Shop/__base.html" %}
 {% load static %}
+
+{% block title %}
+    Registration
+{% endblock title %}
+
+{% block link_css %}
+    <link rel="stylesheet" href="{% static 'main/css/register.css' %}">
+{% endblock link_css %}
+
+{% block main %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+{% endblock main %}
+
+
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,4 +35,5 @@
         <button type="submit">Register</button>
     </form>
 </body>
-</html>
+</html> {% endcomment %}
+

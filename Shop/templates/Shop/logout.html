@@ -1,3 +1,24 @@
+{% extends "Shop/__base.html" %}
+{% load static %}
+
+{% block title %}
+    Logout
+{% endblock title %}
+
+{% block link_css %}
+
+{% endblock link_css %}
+
+{% block main %}
+    <h2>Logout</h2>
+    <form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+    </form>
+{% endblock main %}
+
+
+{% comment %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +33,6 @@
     {% csrf_token %}
     <button type="submit">Logout</button>
     </form>
-{% endblock %}
+    {% endblock %}
 </body>
-</html>
+</html> {% endcomment %}

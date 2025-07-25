@@ -1,12 +1,37 @@
+{% extends "Shop/__base.html" %}
 {% load static %}
+
+{% block title %}
+    Add product
+{% endblock title %}
+
+{% block link_css %}
+<link rel="stylesheet" href="{% static 'Shop/css/add_product.css' %}">
+{% endblock link_css %}
+
+{% block main %}
+    <div class="form-container">
+        <h2>Додати новий товар</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Зберегти товар</button>
+        </form>
+    </div>
+{% endblock main %}
+
+
+
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Додати товар</title>
-    <link rel="stylesheet" href="{% static 'Shop/css/admin_style.css' %}">
+    <link rel="stylesheet" href="{% static 'Shop/css/add_product.css' %}">
 </head>
 <body>
+    
     <div class="form-container">
         <h2>Додати новий товар</h2>
         <form method="post" enctype="multipart/form-data">
@@ -16,4 +41,6 @@
         </form>
     </div>
 </body>
-</html>
+</html> {% endcomment %}
+
+

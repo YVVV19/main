@@ -14,6 +14,7 @@ class Product(models.Model):
     price = models.FloatField()
     category = models.CharField(max_length=30)
     image = models.ImageField(upload_to='Shop/images/admin_add', blank=True, null=True)
+    new = models.BooleanField(default=False)
 
 
 class Review(models.Model):

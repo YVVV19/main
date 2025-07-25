@@ -12,9 +12,13 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    products = Product.objects.all()    
-    return render(request, 'Shop/index.html', {'products': products})
-
+    products = Product.objects.all()
+    new_products = Product.objects.filter(new=True)    
+    context = {
+        'products': products,
+        'new_products': new_products,
+    }
+    return render(request, 'Shop/index.html', context)
 
 def register_view(request):
     if request.method == 'POST':

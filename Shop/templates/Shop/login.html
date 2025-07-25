@@ -1,4 +1,27 @@
+{% extends "Shop/__base.html" %}
 {% load static %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block link_css %}
+    <link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock link_css %}
+
+{% block main %}
+    <div class="container py-5">
+    <form method="POST">
+    {% csrf_token %}
+    {{ login_form }}
+    <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+    </div>
+{% endblock main %}
+
+
+{% comment %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,4 +43,4 @@
     <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
 </div>
 </body>
-</html>
+</html> {% endcomment %}

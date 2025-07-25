@@ -15,7 +15,9 @@
             <a class="nav-link" href="{% url 'paginator' %}">Paginator</a>
         </li>
         <li class="nav-item">
+        {% if user.is_superuser %}
             <a class="nav-link" href="{% url 'add_product' %}">Add Product</a>
+        {% endif %}
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Login</a>

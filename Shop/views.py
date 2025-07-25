@@ -9,7 +9,11 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import user_passes_test
 from django.core.paginator import Paginator
+
+def admin_required(view_function):
+    return user_passes_test(lambda u: u.is_superuser)(view_function)
 
 
 def index(request):
@@ -56,7 +60,7 @@ def logout_request(request):
     messages.info(request, "You have successfully logged out.")
     return redirect("index")
 
-
+@admin_required
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)

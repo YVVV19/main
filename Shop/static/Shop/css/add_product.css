@@ -63,7 +63,8 @@ form {
 }
 
 
-form input, form label {
+form input,
+form label {
     display: block;
     width: 100%;
     margin-bottom: 15px;

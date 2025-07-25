@@ -1,0 +1,50 @@
+{% extends "Shop/__base.html" %}
+{% load static %}
+
+{% block title %}
+    Paginator
+{% endblock title %}
+
+{% block link_css %}
+    <link rel="stylesheet" href="{% static 'Shop/css/style.css' %}">
+{% endblock link_css %}
+
+{% block main %}
+
+    <button class="btn btn-outline-info" type="button" data-bs-toggle="collapse" data-bs-target="#productsCollapse" aria-expanded="false" aria-controls="ProductsCollapse">
+    Products
+    </button>
+    <div class="collapse show" id="productsCollapse">
+    <h2>Products</h2>
+    <ul class="product-list">
+    {% for product in page %}
+        <li class="product-card" id="product-{{ product.name|slugify }}">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <p>[Немає зображення]</p>
+        {% endif %}
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Price: {{ product.price }} USD</p>
+        <button>Add to Cart</button>
+        </li>
+    {% empty %}
+        <li>Поки немає товарів.</li>
+    {% endfor %}
+    </ul>
+    
+    {% if page.has_previous %}
+    <a href="?q={{ query }}&page=1">First</a>
+    <a href="?q={{ query }}&page={{ page.previous_page_number }}">← Back</a>
+    {% endif %}
+    
+    <span>Page {{ page.number }} from {{ page.paginator.num_pages }}</span>
+    
+    {% if page.has_next %}
+    <a href="?q={{ query }}&page={{ page.next_page_number }}">Next →</a>
+    <a href="?q={{ query }}&page={{ page.paginator.num_pages }}">Last</a>
+    {% endif %}
+    {% endblock main %}
+</div>
+    

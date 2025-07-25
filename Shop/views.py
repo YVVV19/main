@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -65,3 +66,11 @@ def add_product(request):
     else:
             form = ProductForm()
     return render(request, 'Shop/admin.html', {'form': form})
+
+
+def paginator(request):
+    prod = Product.objects.all()
+    paginator = Paginator(prod, 3)
+    page_number = request.GET.get("page")
+    page = paginator.get_page(page_number)
+    return render(request, 'Shop/paginator.html', {'page':page})
